@@ -7,6 +7,23 @@ class Form extends React.Component {
     this.state= {
       ingredients: [],
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    let selection = this.refs["ingredient"].value;
+    let url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i="
+
+    fetch( url + selection )
+      .then(res => res.json())
+      .then((res) => {
+        let filteredDrinks = res.drinks;
+        filteredDrinks.splice(7);
+        console.log(filteredDrinks);
+      });
+
+
   }
 
   componentDidMount() {
@@ -22,14 +39,13 @@ class Form extends React.Component {
   render() {
     return(
       <div>
-        Forms
-        <h1>Lookup any Star Wars Character!</h1>
+        <h1>Lookup an ingredient!</h1>
         <form onSubmit= { this.handleSubmit }>
-          <select name="ingredient" onChange={ this.handleSelect } >
+          <select name="ingredient" ref="ingredient" >
             {
-              this.state.ingredients.map((ingredient) => {
+              this.state.ingredients.map((ingredient, index) => {
                 return (
-                  <option value={ingredient}>{ingredient}</option>
+                  <option value={ingredient} key={index}>{ingredient}</option>
                 )
               })
             }
