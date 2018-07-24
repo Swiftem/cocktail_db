@@ -6,6 +6,7 @@ class Form extends React.Component {
     super();
     this.state= {
       ingredients: [],
+      results: [],
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -19,13 +20,14 @@ class Form extends React.Component {
       .then(res => res.json())
       .then((res) => {
         let filteredDrinks = res.drinks;
-        filteredDrinks.splice(7);
-        console.log(filteredDrinks);
+        let sixDrinks = filteredDrinks.splice(0, 6);
+        this.setState({
+          results: sixDrinks,
+        })
       });
 
-
   }
-
+  
   componentDidMount() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
       .then(res => res.json())
@@ -52,6 +54,19 @@ class Form extends React.Component {
           </select>
           <button type="submit">Go</button>
         </form>
+        <ol className="results">
+          {
+            this.state.results.map((result) => {
+              return (
+                <li className="drink name">
+                  {result.strDrink}
+                  <img src={result.strDrinkThumb} width="100"/>
+                  <p>Click here for ingredients</p>
+                </li>
+              )
+            })
+          }
+        </ol>
       </div>
     )
   }
