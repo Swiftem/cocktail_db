@@ -8,7 +8,19 @@ class Profile extends React.Component {
     this.state= {
       drinkObj: {},
     }
+    this.listIngredients = this.listIngredients.bind(this);
   }
+
+  listIngredients(d) {
+    let response = []
+    for (let i = 1; i<16; i++ ) {
+      if (d[`strIngredient${i}`]!== "") {
+        response.push(<dd className="col-sm-9" key={i}>{d[`strIngredient${i}`]}</dd>)
+      }
+    }
+    return response;
+  }
+
   componentDidMount() {
     let drinkId = this.props.match.params.drink_id
     let url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`
@@ -21,15 +33,21 @@ class Profile extends React.Component {
         })
       })
   }
+
   render() {
     let d = this.state.drinkObj;
     return(
       <div>
         <h1>{d.strDrink}</h1>
-        <dl class="row">
-          <dt class="col-sm-3">Glass</dt>
-          <dd class="col-sm-9">{d.strGlass}</dd>
-        </dl>
+        <img src={d.strDrinkThumb} alt={d.strDrink} height='300px'/>
+        <dl className="row">
+          <dt className="col-sm-3">Glass</dt>
+          <dd className="col-sm-9">{d.strGlass}</dd>
+          <dt className="col-sm-3">Instructions</dt>
+          <dd className="col-sm-9">{d.strInstructions}</dd>
+          <dt className="col-sm-3">Ingredients</dt>
+          { this.listIngredients(d)}
+        </dl  >
       </div>
 
     )
