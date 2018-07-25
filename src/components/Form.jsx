@@ -1,4 +1,5 @@
 import React from "react";
+import Drink from "./Drink";
 
 class Form extends React.Component {
 
@@ -10,6 +11,7 @@ class Form extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
 
   handleSubmit(event) {
     event.preventDefault();
@@ -24,10 +26,10 @@ class Form extends React.Component {
         this.setState({
           results: sixDrinks,
         })
-      });
+    });
 
   }
-  
+
   componentDidMount() {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
       .then(res => res.json())
@@ -56,13 +58,14 @@ class Form extends React.Component {
         </form>
         <ol className="results">
           {
-            this.state.results.map((result) => {
+            this.state.results.map((result, index) => {
               return (
-                <li className="drink name">
-                  {result.strDrink}
-                  <img src={result.strDrinkThumb} width="100"/>
-                  <p>Click here for ingredients</p>
-                </li>
+                <Drink
+                  imgSrc={result.strDrinkThumb}
+                  name={result.strDrink}
+                  drinkId={result.idDrink}
+                  key={index}
+                  history={this.props.history}/>
               )
             })
           }
