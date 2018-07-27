@@ -42,10 +42,10 @@ class Form extends React.Component {
 
   render() {
     return(
-      <div>
+      <div class="form-group">
         <h1>Lookup an ingredient!</h1>
         <form onSubmit= { this.handleSubmit }>
-          <select name="ingredient" ref="ingredient" >
+          <select name="ingredient" ref="ingredient" class="form-control">
             {
               this.state.ingredients.map((ingredient, index) => {
                 return (
@@ -54,21 +54,27 @@ class Form extends React.Component {
               })
             }
           </select>
-          <button type="submit">Go</button>
+          <button type="submit" class="btn btn-primary">Go</button>
         </form>
         <ol className="results">
-          {
-            this.state.results.map((result, index) => {
-              return (
-                <Drink
-                  imgSrc={result.strDrinkThumb}
-                  name={result.strDrink}
-                  drinkId={result.idDrink}
-                  key={index}
-                  history={this.props.history}/>
-              )
-            })
-          }
+          <div className="album py-5 bg-light">
+            <div className="container">
+              <div className="row">
+                {
+                  this.state.results.map((result, index) => {
+                    return (
+                      <Drink
+                        imgSrc={result.strDrinkThumb}
+                        name={result.strDrink}
+                        drinkId={result.idDrink}
+                        key={index}
+                        history={this.props.history}/>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </div>
         </ol>
       </div>
     )

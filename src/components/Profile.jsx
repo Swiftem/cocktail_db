@@ -39,7 +39,7 @@ class Profile extends React.Component {
     return(
       <div>
         <h1>{d.strDrink}</h1>
-        <img src={d.strDrinkThumb} alt={d.strDrink} height='300px'/>
+        <img src={d.strDrinkThumb} alt={d.strDrink} class="img-thumbnail"/>
         <dl className="row">
           <dt className="col-sm-3">Glass</dt>
           <dd className="col-sm-9">{d.strGlass}</dd>

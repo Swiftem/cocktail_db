@@ -17,11 +17,15 @@ class Drink extends React.Component {
 
   render() {
     return(
-      <li className="drink name">
-        {this.props.name}
-        <img src={this.props.imgSrc} width="100" alt={this.props.name}/>
-        <button type="submit" onClick={this.getIngredients}>Click here for profile</button>
-      </li>
+        <div className="col-md-4">
+          <div className="card mb-4 shadow-sm">
+            <img className="card-img-top" src={this.props.imgSrc} alt={this.props.name}/>
+            <div className="card-body">
+              <h5 className="card-title text-center">{this.props.name}</h5>
+              <button type="submit" onClick={this.getIngredients} className="btn btn-info btn-block">Click here for profile</button>
+            </div>
+          </div>
+        </div>
     )
   }
 }
