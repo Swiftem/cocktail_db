@@ -21,8 +21,8 @@ class Drink extends React.Component {
           <div className="card mb-4 shadow-sm">
             <img className="card-img-top" src={this.props.imgSrc} alt={this.props.name}/>
             <div className="card-body">
-              <h5 className="card-title text-center">{this.props.name}</h5>
-              <button type="submit" onClick={this.getIngredients} className="btn btn-info btn-block">Click here for profile</button>
+              <h5 className="card-title text-center drink-card__title">{this.props.name}</h5>
+              <button type="submit" onClick={this.getIngredients} className="btn btn-info btn-block">More Info &raquo;</button>
             </div>
           </div>
         </div>

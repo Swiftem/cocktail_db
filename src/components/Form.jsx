@@ -43,7 +43,7 @@ class Form extends React.Component {
   render() {
     return(
       <div class="form-group">
-        <h1>Lookup an ingredient!</h1>
+        <h1 className="text-center">Lookup an ingredient!</h1>
         <form onSubmit= { this.handleSubmit }>
           <select name="ingredient" ref="ingredient" class="form-control">
             {
@@ -54,7 +54,9 @@ class Form extends React.Component {
               })
             }
           </select>
-          <button type="submit" class="btn btn-primary">Go</button>
+          <div className="searchDrinks">
+            <button type="submit" className="btn btn-outline-primary">Check out the drinks!</button>
+          </div>
         </form>
         <ol className="results">
           <div className="album py-5 bg-light">

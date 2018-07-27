@@ -37,9 +37,9 @@ class Profile extends React.Component {
   render() {
     let d = this.state.drinkObj;
     return(
-      <div>
+      <div className="drink-profile">
         <h1>{d.strDrink}</h1>
-        <img src={d.strDrinkThumb} alt={d.strDrink} class="img-thumbnail"/>
+        <img src={d.strDrinkThumb} alt={d.strDrink} className="img-thumbnail profile-pic"/>
         <dl className="row">
           <dt className="col-sm-3">Glass</dt>
           <dd className="col-sm-9">{d.strGlass}</dd>

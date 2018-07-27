@@ -7,3 +7,38 @@ body {
 ol {
 	padding: 0;
 }
+
+.searchDrinks button {
+	display: block;
+	width: 200px;
+	margin: auto;
+	margin-top: 1rem;
+}
+
+.drink-card__title {
+	height: 5rem;
+}
+
+.cocktail-logo {
+	display: block;
+	width: 200px;
+	margin: auto;
+	/*margin-top: 1rem;*/
+}
+
+/*.app-header img p h2 i {
+	text-align: center;
+}*/
+
+.jumbotron {
+	text-align: center;
+}
+
+.profile-pic {
+	margin-bottom: 15px;
+
+}
+
+.drink-profile h1 {
+	text-align: center;
+}
