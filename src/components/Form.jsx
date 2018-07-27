@@ -35,7 +35,7 @@ class Form extends React.Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          ingredients: res.drinks.map(ingredient => ingredient.strIngredient1)
+          ingredients: res.drinks.map(ingredient => ingredient.strIngredient1).sort()
         })
       })
   };
